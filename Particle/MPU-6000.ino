@@ -120,7 +120,6 @@ void loop()
     data[4] = Wire.read();
     data[5] = Wire.read();
   }
-  delay(800);
 
   // Convert the data
   xGyro = ((data[1] * 256) + data[0]);
@@ -138,15 +137,18 @@ void loop()
   {
     zGyro -= 65536;
   }
-  delay(800);
 
   // Output data to dashboard
   Particle.publish("Acceleration in X-Axis : ", String(xAccl));
+  delay(1000);
   Particle.publish("Acceleration in Y-Axis : ", String(yAccl));
+  delay(1000);
   Particle.publish("Acceleration in Z-Axis : ", String(zAccl));
   delay(1000);
   Particle.publish("X-Axis of Rotation : ", String(xGyro));
+  delay(1000);
   Particle.publish("Y-Axis of Rotation : ", String(yGyro));
+  delay(1000);
   Particle.publish("Z-Axis of Rotation : ", String(zGyro));
   delay(1000);
 }
